@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (C) 2008 ZXing authors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+  <SurfaceView android:id="@+id/preview_view"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:layout_gravity="center"
+               android:layout_centerInParent="true"/>
+	
+    <TextView 
+          android:layout_width="fill_parent"
+          android:layout_height="50dp"
+          android:background="#7F000000"
+          android:text="扫一扫"
+          android:textSize="20sp"
+          android:textColor="#ffffffff"
+          android:gravity="center"
+          android:layout_weight="9"
+          />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:orientation="vertical"        
+        >
+
+
+        <!-- 顶部标题栏 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/back_scanner"
+                android:onClick="turnBack" />
+
+            <Button
+                android:id="@+id/but_album"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_border_style"
+                android:padding="6dp"
+                android:text="相册"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" 
+                android:visibility="invisible"
+                />
+        </RelativeLayout>
+        
+         <TextView 
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="70dp"
+          android:text="将二维码/条形码放入框内，"
+          android:textColor="@color/white"
+          android:textSize="16sp"
+          />
+         <TextView 
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="center_horizontal"
+          android:layout_gravity="center_horizontal"
+          android:text="即可自动扫描"
+          android:textColor="@color/white"
+          android:textSize="16sp"
+          />
+        
+        
+    </LinearLayout>
+    
+    
+    
+  
+  <com.sm.Zxing.Demo.view.ViewfinderView
+      android:id="@+id/viewfinder_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"      
+      android:background="@color/transparent"/>
+
+
+
+  <TextView android:id="@+id/txtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"          
+            android:textSize="14sp"/>
+  
+  <RelativeLayout 
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      >
+      
+      
+  	  <!-- 底部选项栏  -->
+      <LinearLayout 
+          android:id="@+id/ll_zxing_bottom_options"
+          android:layout_width="fill_parent"
+          android:layout_height="100dp"
+          android:orientation="horizontal"
+          android:gravity="center_vertical"
+          android:layout_alignParentBottom="true"
+          android:background="#7F000000"
+          android:paddingTop="8dp"
+          android:paddingBottom="8dp"
+          >
+          
+          <!-- 分享 -->
+          <LinearLayout 
+               android:layout_width="fill_parent"
+         	   android:layout_height="wrap_content"
+         	   android:orientation="vertical"
+         	   android:layout_weight="1"
+         	   android:gravity="center_horizontal"
+         	   android:visibility="invisible"
+              >
+              
+              <ImageButton 
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/share"
+                  />
+              <TextView 
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:layout_marginTop="4dp"
+                  android:text="分享"
+                  />
+          </LinearLayout>
+          <!-- 开灯 -->
+          <LinearLayout 
+               android:layout_width="fill_parent"
+         	   android:layout_height="wrap_content"
+         	   android:orientation="vertical"
+         	   android:layout_weight="1"
+         	   android:gravity="center_horizontal"
+              >
+              
+              <ImageButton 
+                  android:id="@+id/ib_zxing_switch_light"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/lighting"
+                  />
+              <TextView 
+                  android:id="@+id/tv_zxing_switch_light"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:layout_marginTop="4dp"
+                  android:text="开灯"
+                  />
+          </LinearLayout>
+          
+          <!-- 我的二维码-->
+          <LinearLayout 
+               android:layout_width="fill_parent"
+         	   android:layout_height="wrap_content"
+         	   android:orientation="vertical"
+         	   android:layout_weight="1"
+         	   android:gravity="center_horizontal"
+         	    android:visibility="invisible"
+              >
+              
+              <ImageButton 
+                  android:id="@+id/ib_zxing_my2dcode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/my_code"
+                  />
+              <TextView 
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:layout_marginTop="4dp"
+                  android:text="我的二维码"
+                  />
+          </LinearLayout>
+          
+      </LinearLayout>
+      
+     
+      
+  </RelativeLayout>
+  
+  <!-- 显示我的二维码 -->
+  <LinearLayout
+      	android:id="@+id/ll_show_my2dCode"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" 
+        android:background="#ffffff"
+        android:visibility="gone"
+        >
+		<!-- 显示图片 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:layout_weight="9"
+            >
+          <ImageView 
+              android:id="@+id/iv_zxing_my2dCode"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_centerInParent="true"
+              />            
+        </RelativeLayout>
+        
+        <!-- 选项（保存，取消） -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+            android:layout_weight="1"
+            >
+           <Button 
+               android:id="@+id/but_zxing_myimage_save"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:text="保存图片"
+               android:gravity="center"
+               android:layout_weight="1"               
+               />
+           <Button 
+               android:id="@+id/but_zxing_myimage_cancel"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:text="取消"
+               android:gravity="center"
+               android:layout_weight="1"               
+               />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
